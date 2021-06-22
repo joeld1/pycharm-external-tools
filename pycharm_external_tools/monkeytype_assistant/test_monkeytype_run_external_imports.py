@@ -10,7 +10,14 @@ from monkeytype.db.sqlite import SQLiteStore
 
 
 
-sys.path.insert(0, Path(__file__).parent.parent.parent.as_posix())
+def add_root_dir_to_path(package_name:str="pycharm_external_tools"):
+    cur_path = Path(__file__)
+    for p in cur_path.parents:
+        if p.name == package_name:
+            if p.parent.as_posix() not in sys.path:
+                sys.path.insert(0, p.parent.as_posix())
+            break
+add_root_dir_to_path()
 from pycharm_external_tools.monkeytype_assistant import create_monkeytype_patch
 # import MonkeytypeAssistant, get_module_path,monkeytype_run, monkeytype_list_modules, create_monkeytype_pyment_black_isort_patch
 from pycharm_external_tools.tkinter_snippets.tk_snippets import show_info_message
