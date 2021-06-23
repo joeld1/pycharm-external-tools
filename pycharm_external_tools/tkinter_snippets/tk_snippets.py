@@ -1,19 +1,17 @@
-import dataclasses
-import time
 from pathlib import Path
 from tkinter import (
-    END,
     Button,
     Entry,
     Label,
     OptionMenu,
     StringVar,
-    Text,
     Tk,
     filedialog,
-    mainloop, simpledialog, messagebox, ttk,
+    messagebox,
+    simpledialog,
+    ttk,
 )
-from typing import Dict
+from typing import Any, Dict, Optional
 
 root = Tk()
 
@@ -62,7 +60,7 @@ def get_directory_path(
 class TkinterForm:
     """ """
 
-    def __init__(self, dict_to_convert_to_form: Dict[str, str], default_form_vals=None) -> None:
+    def __init__(self, dict_to_convert_to_form: Dict[str, str], default_form_vals:Optional[Dict[Any,Any]]=None) -> None:
         """
 
 
