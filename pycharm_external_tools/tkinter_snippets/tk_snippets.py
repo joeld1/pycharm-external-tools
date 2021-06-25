@@ -16,10 +16,11 @@ from typing import Any, Dict, Optional
 root = Tk()
 
 
-def get_filepath(prompt: str = "", init_dir: str = Path(__file__).parent.as_posix()):
+def get_filepath(prompt: str = "", init_dir: str = Path(__file__).parent.as_posix()) -> str:
     """
 
 
+    :rtype: object
     :param prompt:  (Default value = "")
     :param init_dir:  (Default value = Path(__file__).parent.as_posix())
 

@@ -2,6 +2,7 @@ import os
 import sys
 from pathlib import Path
 
+
 def add_root_dir_to_path(package_name:str="pycharm_external_tools"):
     cur_path = Path(__file__)
     for p in cur_path.parents:
@@ -10,9 +11,12 @@ def add_root_dir_to_path(package_name:str="pycharm_external_tools"):
                 sys.path.insert(0, p.parent.as_posix())
             break
 add_root_dir_to_path()
-from pycharm_external_tools.tkinter_snippets.tk_snippets import TkinterForm, get_filepath
+from project_manager import LocalProjectManager, SublimeBuildConfigGenerator
 
-from project_manager import SublimeBuildConfigGenerator, LocalProjectManager
+from pycharm_external_tools.tkinter_snippets.tk_snippets import (
+    TkinterForm,
+    get_filepath,
+)
 
 
 def export_sublime_text_build_config_wrapper():
@@ -74,6 +78,15 @@ def migrate_requirements_to_pypoetry_toml_wrapper():
     print(f"Kwargs we'll be supplying are:\n{kwargs_to_pass_into_method}")
     r = LocalProjectManager.migrate_requirements_to_pypoetry_toml(**kwargs_to_pass_into_method)
 
+def create_conda_env_for_existing_pyproject_toml_wrapper():
+    toml_path = get_filepath(
+        prompt="Select the pyproject.toml file to create a conda env for",
+        init_dir=os.getcwd())
+    assert Path(toml_path).name == "pyproject.toml"
+    r = LocalProjectManager.create_conda_env_for_existing_pyproject_toml(pyproject_toml_path=toml_path)
+
+
+
 
 # TODO: Create wrappers for following
 """
@@ -86,7 +99,6 @@ PoetryProjectManager.link_poetry_proj_with_conda_env
 PoetryProjectManager.create_poetry_project
 PoetryProjectManager.init_poetry_project
 PoetryProjectManager.add_notebook_ipykernel_dependencies_to_pypoetry
-fastapi startproject
 CondaEnvManager.get_path_to_confastapi startappda_env
 CondaEnvManager.init_prev_made_conda_env
 CondaEnvManager.uninstall_kernel

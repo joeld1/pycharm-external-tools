@@ -3,6 +3,7 @@ name = "pycharm_external_tools"
 version = "0.1.0"
 description = ""
 authors = ["JD <10216562+joeld1@users.noreply.github.com>"]
+readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.9"
@@ -12,8 +13,8 @@ black = "^21.5b2"
 isort = "^5.8.0"
 manage-fastapi = "^1.0.0"
 poetry-core = "^1.0.3"
-project-manager = {git = "https://github.com/joeld1/project-manager.git", rev = "main"}
 notebooktoall = "^0.2.3"
+project-manager = {git = "https://github.com/joeld1/project-manager.git", rev = "main"}
 
 [tool.poetry.dev-dependencies]
 notebook = "^6.4.0"
@@ -26,7 +27,19 @@ flake8 = "^3.9.2"
 mypy = "^0.910"
 isort = "^5.9.1"
 black = "^21.6b0"
+poetry-dynamic-versioning = "^0.13.0"
 
 [build-system]
-requires = ["poetry-core>=1.0.0"]
+requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
+
+[tool.poetry-dynamic-versioning]
+enable = true
+vcs = "git"
+pattern = "commit"
+bump = true
+
+[tool.poetry-dynamic-versioning.substitution]
+enable = true
+vcs = "git"
+pattern = "commit"
