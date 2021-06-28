@@ -1,0 +1,10 @@
+[tool.poetry-dynamic-versioning]
+enable = true
+vcs = "git"
+pattern = "commit"
+bump = true
+
+[tool.poetry-dynamic-versioning.substitution]
+enable = true
+vcs = "git"
+pattern = "commit"

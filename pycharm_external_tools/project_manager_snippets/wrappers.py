@@ -22,7 +22,9 @@ from project_manager import (
 from pycharm_external_tools.tkinter_snippets.tk_snippets import (
     TkinterForm,
     destroy_root,
+    get_directory_path,
     get_filepath,
+    show_info_message,
 )
 
 
@@ -53,19 +55,23 @@ def generate_sublime_text_3_build_config_from_conda_env_wrapper():
 
 
 def migrate_pyproject_toml_to_pyproject_toml_wrapper():
-    kwargs_to_pass_into_method = {
-        "poetry_proj_conda_env_name": "Enter the Conda Env Name for the Poetry Project you want to update"}
-    my_form = TkinterForm(dict_to_convert_to_form=kwargs_to_pass_into_method)
-    cur_form = my_form.submitted_form_values.copy()
+    kwargs_to_pass_into_method = {}
 
-    kwargs_to_pass_into_method.update(cur_form)
-    kwargs_to_pass_into_method["dest_pyproject_toml"] = get_filepath(prompt="Select pyproject.toml to update",
-                                                                     init_dir=os.getcwd())
-    kwargs_to_pass_into_method["src_pyproject_toml"] = get_filepath(
-        prompt="Select pyproject.toml to use for updating/migrating", init_dir=os.getcwd())
+    prompt = "Select pyproject.toml to update"
+    show_info_message(message=prompt)
+    kwargs_to_pass_into_method["dest_pyproject_toml"] = get_filepath(prompt=prompt,init_dir=os.getcwd())
+
+    prompt = "Select pyproject.toml to use for updating/migrating"
+    show_info_message(message=prompt)
+    kwargs_to_pass_into_method["src_pyproject_toml"] = get_filepath(prompt=prompt, init_dir=os.getcwd())
+
+    kwargs_to_pass_into_method["poetry_proj_conda_env_name"] = "Enter the Conda Env Name for the Poetry Project you want to update"
+    my_form = TkinterForm(dict_to_convert_to_form=kwargs_to_pass_into_method)
     destroy_root()
+    cur_form = my_form.submitted_form_values.copy()
+    kwargs_to_pass_into_method.update(cur_form)
+
     kwargs_to_pass_into_method["warn_before_add"] = True
-    print(f"Kwargs we'll be supplying are:\n{kwargs_to_pass_into_method}")
     r = LocalProjectManager.migrate_pyproject_toml_to_pyproject_toml(**kwargs_to_pass_into_method)
 
 
@@ -92,6 +98,7 @@ def create_conda_env_for_existing_pyproject_toml_wrapper():
     toml_path = get_filepath(
         prompt="Select the pyproject.toml file to create a conda env for",
         init_dir=os.getcwd())
+    destroy_root()
     assert Path(toml_path).name == "pyproject.toml"
     r = LocalProjectManager.create_conda_env_for_existing_pyproject_toml(pyproject_toml_path=toml_path)
 
@@ -125,6 +132,24 @@ def uninstall_conda_envs_and_kernels_wrapper():
     cur_form['conda_env_names'] = list(map(lambda x: x.strip(), (cur_form['conda_env_names'].split(","))))
     kwargs_to_pass_into_method.update(cur_form)
     r = CondaEnvManager.uninstall_conda_envs_and_kernels(**kwargs_to_pass_into_method)
+
+def init_current_dir_as_a_poetry_conda_project_wrapper():
+    """ """
+    prompt = "Select directory to init a conda poetry project in!"
+    show_info_message(title="Select Directory", message=prompt)
+    dir_to_cd_into = get_directory_path(prompt=prompt, init_dir=os.getcwd())
+    os.chdir(dir_to_cd_into)
+
+    kwargs_to_pass_into_method = {
+        "clean_env_name": "Enter a name to use for the Poetry Conda environment",
+        "python_version": "Enter a Python Version to Use",
+    }
+    my_form = TkinterForm(dict_to_convert_to_form=kwargs_to_pass_into_method)
+    destroy_root()
+    cur_form = my_form.submitted_form_values.copy()
+    kwargs_to_pass_into_method.update(cur_form)
+    kwargs_to_pass_into_method["add_git"] = False
+    LocalProjectManager.init_current_dir_as_a_poetry_conda_project(**kwargs_to_pass_into_method)
 
 
 # TODO: Create wrappers for following
