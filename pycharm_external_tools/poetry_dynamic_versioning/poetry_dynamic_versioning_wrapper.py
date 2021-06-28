@@ -38,8 +38,8 @@ def get_poetry_dynamic_versioning_settings():
 
     :return:
     """
-    path_to_file = Path(__file__).parent.joinpath('settings_template.toml')
-    with open(path_to_file, 'r', encoding='utf-8') as f:
+    path_to_file = Path(__file__).parent.joinpath("settings_template.toml")
+    with open(path_to_file, "r", encoding="utf-8") as f:
         template = f.read()
     return template
 
