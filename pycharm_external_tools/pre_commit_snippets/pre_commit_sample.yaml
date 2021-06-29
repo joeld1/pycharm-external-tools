@@ -24,27 +24,27 @@ repos:
             language: system
             types: [python]
             args: [--profile, black]
-    - repo: local
-      hooks:
           - id: black
             name: black
             entry: /opt/homebrew/anaconda3/envs/pycharm_external_tools/bin/black
             language: system
             types: [python]
-    - repo: local
-      hooks:
           - id: flake8
             name: flake8
             entry: flake8
             language: system
             types: [python]
-    - repo: local
-      hooks:
           - id: mypy
             name: mypy
             entry: /opt/homebrew/anaconda3/envs/pycharm_external_tools/bin/mypy
             language: system
             types: [python]
+          - id: wily
+            name: wily
+            entry: wily diff
+            verbose: true
+            language: python
+            additional_dependencies: [wily]
     - repo: https://github.com/dfm/black_nbconvert
       rev: stable
       hooks:
@@ -85,11 +85,3 @@ repos:
       hooks:
           - id: interrogate
             args: [--quiet, --fail-under=95]
-    - repo: local
-      hooks:
-          - id: wily
-            name: wily
-            entry: wily diff
-            verbose: true
-            language: python
-            additional_dependencies: [wily]
