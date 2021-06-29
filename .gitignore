@@ -1,0 +1,6 @@
+/monkeytype.sqlite3
+/poetry.toml
+/poetry.lock
+/.mypy_cache/
+/patches/
+/dist/
