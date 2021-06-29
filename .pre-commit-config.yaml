@@ -24,8 +24,6 @@ repos:
             language: system
             types: [python]
             args: [--profile, black]
-    - repo: local
-      hooks:
           - id: black
             name: black
             entry: /opt/homebrew/anaconda3/envs/pycharm_external_tools/bin/black
