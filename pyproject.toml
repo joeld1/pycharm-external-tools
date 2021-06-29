@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "pycharm_external_tools"
-version = "0.0.1.dev11+2f5de88"
+version = "0.0.1.dev16+56a12d4"
 description = ""
 authors = ["JD <10216562+joeld1@users.noreply.github.com>"]
 readme = "README.md"
