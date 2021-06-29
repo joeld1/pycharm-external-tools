@@ -29,7 +29,7 @@ def read_pre_commit_sample():
 
     :return:
     """
-    path_to_file = Path(__file__).parent.joinpath("pre_commit_sample.txt")
+    path_to_file = Path(__file__).parent.joinpath("pre_commit_sample.yaml")
     with open(path_to_file, "r", encoding="utf-8") as f:
         template = f.read()
     return template

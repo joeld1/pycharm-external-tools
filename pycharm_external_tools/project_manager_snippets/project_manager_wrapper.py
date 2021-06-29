@@ -40,6 +40,10 @@ if __name__ == "__main__":
         init_current_dir_as_a_poetry_conda_project_wrapper()
     elif method_to_call == "migrate_pyproject_toml_to_pyproject_toml":
         migrate_pyproject_toml_to_pyproject_toml_wrapper()
+    elif method_to_call == "migrate_pyproject_toml_to_pyproject_toml_dev":
+        migrate_pyproject_toml_to_pyproject_toml_wrapper(
+            dependency_section_name="tool.poetry.dev-dependencies"
+        )
     elif method_to_call == "migrate_requirements_to_pypoetry_toml":
         migrate_requirements_to_pypoetry_toml_wrapper()
     elif method_to_call == "uninstall_conda_env":
