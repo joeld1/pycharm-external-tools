@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "pycharm_external_tools"
-version = "0.0.1.dev10+d6e0ec6"
+version = "0.0.1.dev11+2f5de88"
 description = ""
 authors = ["JD <10216562+joeld1@users.noreply.github.com>"]
 readme = "README.md"
@@ -30,6 +30,8 @@ isort = "^5.9.1"
 black = "^21.6b0"
 poetry-dynamic-versioning = "^0.13.0"
 pipreqs = "^0.4.10"
+interrogate = {version = "^1.4.0", extras = ["=png"]}
+wily = "^1.19.0"
 
 [build-system]
 requires = ["poetry-core"]
