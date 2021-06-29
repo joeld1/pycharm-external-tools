@@ -84,3 +84,11 @@ repos:
     hooks:
       - id: interrogate
         args: [ --quiet, --fail-under=95 ]
+  - repo: local
+    hooks:
+      - id: wily
+        name: wily
+        entry: wily diff
+        verbose: true
+        language: python
+        additional_dependencies: [ wily ]
