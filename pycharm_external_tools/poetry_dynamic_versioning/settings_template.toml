@@ -46,3 +46,6 @@ badge-format = "svg"
 
 [tool.poetry.extras]
 dev_tools = ["pytest", "pytest-cov", "autoflake", "flake8", "mypy", "pre-commit", "black", "isort", "notebook", "ipykernel", "pipreqs", "wily", "poetry-dynamic-versioning", "interrogate"]
+
+# poetry add --optional notebook --optional ipykernel --optional pre-commit --optional pytest --optional pytest-cov --optional autoflake --optional flake8 --optional mypy --optional isort --optional black --optional "interrogate[png]" --optional wily
+# poetry remove -D notebook -D ipykernel -D pre-commit -D pytest -D pytest-cov -D autoflake -D flake8 -D mypy -D isort -D black -D poetry-dynamic -D pipreqs -D wily -D interrogate

@@ -45,6 +45,11 @@ repos:
             verbose: true
             language: python
             additional_dependencies: [wily]
+          - id: poetry-dynamic-versioning
+            name: poetry-dynamic-versioning
+            entry: /opt/homebrew/anaconda3/envs/pycharm_external_tools/bin/poetry-dynamic-versioning
+            language: script
+            pass_filenames: false
     - repo: https://github.com/dfm/black_nbconvert
       rev: stable
       hooks:
