@@ -35,16 +35,21 @@ repos:
             verbose: true
             language: python
             additional_dependencies: [wily]
+          - id: poetry-dynamic-versioning
+            name: poetry-dynamic-versioning
+            entry: /opt/homebrew/anaconda3/envs/pycharm_external_tools/bin/poetry-dynamic-versioning
+            language: script
+            pass_filenames: false
     - repo: https://github.com/jumanjihouse/pre-commit-hooks
       rev: 2.1.5
       hooks:
           - id: markdownlint
     - repo: https://github.com/adrienverge/yamllint.git
-      rev: v1.26.1
+      rev: v1.26.2
       hooks:
           - id: yamllint
             args: [--format, parsable, --strict]
-            exclude: pre_commit_sample.yaml
+            exclude: $pre_commit_sample.yaml|pre-commit-config.yaml
     - repo: https://github.com/jumanjihouse/pre-commit-hook-yamlfmt
       rev: 0.1.0
       hooks:
