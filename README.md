@@ -5,4 +5,4 @@ A collection of snippets that are meant to be called as External Tools by PyChar
 
 ## Note
 
-Things are not refactored and were designed for my personal use at the moment.
+Things are not refactored and are designed for my personal use at the moment.
