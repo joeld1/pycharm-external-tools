@@ -1,75 +1,75 @@
----
-repos:
-    - repo: https://github.com/pre-commit/pre-commit-hooks
-      rev: v4.0.1
-      hooks:
-          - id: check-ast
-          - id: check-toml
-          - id: check-yaml
-          - id: debug-statements
-          - id: trailing-whitespace
-          - id: end-of-file-fixer
-          - id: check-added-large-files
-          - id: debug-statements
-          - id: name-tests-test
-          - id: check-json
-          - id: pretty-format-json
-          - id: detect-private-key
-          - id: forbid-new-submodules
-    - repo: local
-      hooks:
-          - id: isort
-            name: isort
-            entry: isort
-            language: system
-            types: [python]
-            args: [--profile, black]
-          - id: black
-            name: black
-            entry: /opt/homebrew/anaconda3/envs/pycharm_external_tools/bin/black
-            language: system
-            types: [python]
-          - id: wily
-            name: wily
-            entry: wily diff
-            verbose: true
-            language: python
-            additional_dependencies: [wily]
-          - id: poetry-dynamic-versioning
-            name: poetry-dynamic-versioning
-            entry: /opt/homebrew/anaconda3/envs/pycharm_external_tools/bin/poetry-dynamic-versioning
-            language: script
-            pass_filenames: false
-    - repo: https://github.com/jumanjihouse/pre-commit-hooks
-      rev: 2.1.5
-      hooks:
-          - id: markdownlint
-    - repo: https://github.com/adrienverge/yamllint.git
-      rev: v1.26.2
-      hooks:
-          - id: yamllint
-            args: [--format, parsable, --strict]
-            exclude: $pre_commit_sample.yaml|pre-commit-config.yaml
-    - repo: https://github.com/jumanjihouse/pre-commit-hook-yamlfmt
-      rev: 0.1.0
-      hooks:
-          - id: yamlfmt
-#    - repo: https://github.com/econchick/interrogate
-#      rev: 1.4.0
+#---
+#repos:
+#    - repo: https://github.com/pre-commit/pre-commit-hooks
+#      rev: v4.0.1
 #      hooks:
-#          - id: interrogate
-#            args: [--fail-under=95]
-#  - repo: local
-#    hooks:
-#      - id: flake8
-#        name: flake8
-#        entry: flake8
-#        language: system
-#        types: [python]
-#  - repo: local
-#    hooks:
-#      - id: mypy
-#        name: mypy
-#        entry: /opt/homebrew/anaconda3/envs/pycharm_external_tools/bin/mypy
-#        language: system
-#        types: [python]
+#          - id: check-ast
+#          - id: check-toml
+#          - id: check-yaml
+#          - id: debug-statements
+#          - id: trailing-whitespace
+#          - id: end-of-file-fixer
+#          - id: check-added-large-files
+#          - id: debug-statements
+#          - id: name-tests-test
+#          - id: check-json
+#          - id: pretty-format-json
+#          - id: detect-private-key
+#          - id: forbid-new-submodules
+#    - repo: local
+#      hooks:
+#          - id: isort
+#            name: isort
+#            entry: isort
+#            language: system
+#            types: [python]
+#            args: [--profile, black]
+#          - id: black
+#            name: black
+#            entry: /opt/homebrew/anaconda3/envs/pycharm_external_tools/bin/black
+#            language: system
+#            types: [python]
+#          - id: wily
+#            name: wily
+#            entry: wily diff
+#            verbose: true
+#            language: python
+#            additional_dependencies: [wily]
+#          - id: poetry-dynamic-versioning
+#            name: poetry-dynamic-versioning
+#            entry: /opt/homebrew/anaconda3/envs/pycharm_external_tools/bin/poetry-dynamic-versioning
+#            language: script
+#            pass_filenames: false
+#    - repo: https://github.com/jumanjihouse/pre-commit-hooks
+#      rev: 2.1.5
+#      hooks:
+#          - id: markdownlint
+#    - repo: https://github.com/adrienverge/yamllint.git
+#      rev: v1.26.2
+#      hooks:
+#          - id: yamllint
+#            args: [--format, parsable, --strict]
+#            exclude: $pre_commit_sample.yaml|pre-commit-config.yaml
+#    - repo: https://github.com/jumanjihouse/pre-commit-hook-yamlfmt
+#      rev: 0.1.0
+#      hooks:
+#          - id: yamlfmt
+##    - repo: https://github.com/econchick/interrogate
+##      rev: 1.4.0
+##      hooks:
+##          - id: interrogate
+##            args: [--fail-under=95]
+##  - repo: local
+##    hooks:
+##      - id: flake8
+##        name: flake8
+##        entry: flake8
+##        language: system
+##        types: [python]
+##  - repo: local
+##    hooks:
+##      - id: mypy
+##        name: mypy
+##        entry: /opt/homebrew/anaconda3/envs/pycharm_external_tools/bin/mypy
+##        language: system
+##        types: [python]

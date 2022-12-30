@@ -54,6 +54,7 @@ if __name__ == "__main__":
     os.chdir(project_path)
 
     cur_dir_files = os.listdir(".")
+    print(project_path)
     assert (".git" in cur_dir_files) and ("pyproject.toml" in cur_dir_files)
 
     method_to_call = sys.argv[1]
